@@ -29,7 +29,8 @@ while True:
                         print(f'{selecoes:<10}: {nome}')
                 case 2:
                     nomeSelecao = input('Digite o nome da Seleção: ').title()
-                    while not dml.verifica_nome('equipe', nomeSelecao):
+                    if not dml.verifica_nome('equipe', nomeSelecao):
+                        print(f'Hello {nomeSelecao}')
                         nomeSelecao = input('Digite o nome da Seleção: ').title()
-                        dml.insere_registros('equipe', nomeSelecao, '')
+                        dml.insere_registros('equipe', nomeSelecao)
                         print(f'{nomeSelecao} inserido com sucesso')

@@ -7,7 +7,7 @@ class DML:
     def insere_registros(self, tabela, nome):
         if self.verifica_nome(tabela, nome):
             query = f'INSERT INTO {tabela} VALUES ("{nome}")'
-            self.__cursor.execute(query)
+            self.__cursor.execute([query])
             self.__conn.commit()
             return True
         return False
@@ -15,7 +15,7 @@ class DML:
     def verifica_nome(self, tabela, login):
         self.lista_logins = [ login_name[0] for login_name in self.__query.busca_registros(tabela)]
         if login in self.lista_logins:
-            print(f'Login - {login} - já existe. Digite outro...')
+            print(f'Nome - {login} - já existe. Digite outro...')
             return False
         return True
 
