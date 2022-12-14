@@ -36,7 +36,6 @@ class Arbitro(Base):
         return f''
 
 
-
 class Fases(Base):
     __tablename__: str = 'fases'
 
@@ -49,6 +48,7 @@ class Grupos(Base):
 
     id_grupo: int = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     nome_grupo: str = sa.Column(sa.String(20), nullable=False)
+    fase_id: int = sa.Column(sa.Integer, ForeignKey='fases.id_fase')
 
     def __repr__(self) -> str:
         '''Essa função retorna a representação do objeto'''
