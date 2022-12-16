@@ -1,31 +1,68 @@
-class Menu:
-    def menu_principal(self):
-        menu = '''
-            Bem-vindo(a) ao Menu da Copa 2022
+import os
+import platform
 
-            Qual tabela você deseja 
+
+def limpa_tela() -> None:
+    '''
+    Limpa a tela independente do Sistema Operacional
+
+    return:
+        None
+    '''
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+
+def cabecalho(txt) -> str:
+    '''
+    Exibe um cabeçalho personalizado
+
+    return:
+        string formatada
+    '''
+    return f'{txt:-^50}'
+
+
+def menu_principal() -> int:
+    '''
+    Exibe o menu principal na tela
+
+    return:
+        None
+    '''
+    limpa_tela()
+    print(cabecalho(" MENU PRINCIPAL "))
+    print(f'''
+          Qual tabela você deseja 
             verificar:
-
             1. Seleções
             2. Técnicos
             3. Grupos
             4. Árbitros
             5. Partidas
-            6. Partidas
-        '''
-        return menu
+            6. Sair
+          ''')
+    opcao = int(input('Opção: '))
+    return opcao
 
 
-class MenuSecundario:
-    def menu_secundario(self):
-        menu = '''
-            O que você deseja fazer? 
+def menu_secundario() -> int:
+    '''
+    Exibe o menu principal na tela
 
-            1. Consultar
-            2. Inserir
-            3. Atualizar
-            4. Remover
-            5. Sair
-        '''
-        return menu
-
+    return:
+        None
+    '''
+    limpa_tela()
+    print(f'''
+          Qual comando você
+          deseja executar:
+            1. Inserir
+            2. Editar
+            3. Excluir
+            4. Listar
+          ''')
+    opcao = int(input('Opção: '))
+    return opcao
