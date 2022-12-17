@@ -31,6 +31,8 @@ if __name__ == '__main__':
                 match menu_secundario():
                     case 1:
                         limpa_tela()
+                        for element in listar_tabelas(Equipe):
+                            print(element.nome_equipe)
                         selecao = Equipe(
                             nome_equipe = input('Digite o nome da seleção: ').strip().lower(),
                             tecnico_id = int(input('ID: ')),
@@ -39,6 +41,7 @@ if __name__ == '__main__':
                         print(inserir(selecao))
                         sleep(2)
                     case 2:
+                        # Está com erro
                         limpa_tela()
                         print(cabecalho(' Atualizar registro '))
                         for equipe in listar_tabelas(Equipe):
@@ -46,5 +49,14 @@ if __name__ == '__main__':
                         escolha = int(input('Qual seleção você deseja atualizar: '))
                         nova_selecao = input('Nova seleção: ')
                         selecao = Equipe(
-                            print(atualizar_registros(Equipe, escolha, nova_selecao))
+                            print(atualizar_registros(Equipe, equipe, nova_selecao))
                         )
+                    case 3:
+                        limpa_tela()
+                        print(cabecalho(' Excluindo Seleção '))
+                        for selecao in listar_tabelas(Equipe):
+                            print(f'{selecao.nome_equipe}')
+                        equipe = input('Qual seleção você deseja remover? ').lower()
+                        print(remover_registro(Equipe, equipe))
+                        
+                    

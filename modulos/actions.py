@@ -25,27 +25,16 @@ def listar_tabelas(tabela):
     return query_tabela
 
 
-def atualizar_registros(tabela, nome, opcao, campo):
-    query = session.query(tabela).get(nome)
-    match opcao:
-        case 'tecnico':
-            query.nome_tecnico = campo
-        case 'selecao':
-            query.nome_equipe = campo
-        case 'arbitro':
-            query.nome_arbitro = campo
-        case 'grupo':
-            query.nome_grupo = campo
-        case '':
-            ''
-
+def atualizar_registros(tbl, equipe, nova_equipe):
+    query = session.query(tbl).get(equipe)
+    query.nome_equipe = nova_equipe
     session.commit()
-    return f'{query.nome} foi atualizado'
+    return f'{query.nome_equipe} foi atualizado com sucesso!'
 
 
 def remover_registro(tabela, nome):
-    reg = session.query(tabela).filter_by(name=nome).first()
+    reg = session.query(tabela).filter_by(nome_equipe=nome).first()
     session.delete(reg)
     session.commit()
-    return f'{reg.nome} foi removido com sucesso'
+    return f'{reg} foi removido com sucesso'
 
