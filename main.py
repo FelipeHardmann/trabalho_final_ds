@@ -23,6 +23,20 @@ from modulos.actions import (
 )
 import sys
 
+
+def verifyEquipe():
+    nameEquipe = str(input('Digite o nome da equipe: '))
+    nameEquipeTrated = f"('{nameEquipe}',)"
+    for element in listar_tabelas(Equipe.nome_equipe):
+        if(nameEquipeTrated == str(element)):
+            nameEquipe = str(input('Equipe já existente, digite outro nome: '))
+    selecao = Equipe(
+        tecnico_id = int(input('Digite o ID do técnico: ')),
+        grupo_id = int(input('Digite o ID do grupo: ')),
+        nome_equipe = nameEquipe
+    )
+    return selecao
+
 if __name__ == '__main__':
     while True:
         match menu_principal():
@@ -31,14 +45,8 @@ if __name__ == '__main__':
                 match menu_secundario():
                     case 1:
                         limpa_tela()
-                        for element in listar_tabelas(Equipe):
-                            print(element.nome_equipe)
-                        selecao = Equipe(
-                            nome_equipe = input('Digite o nome da seleção: ').strip().lower(),
-                            tecnico_id = int(input('ID: ')),
-                            grupo_id = int(input('ID: '))
-                        )
-                        print(inserir(selecao))
+                       # print(element.nome_equipe)
+                        print(inserir(verifyEquipe()))
                         sleep(2)
                     case 2:
                         # Está com erro

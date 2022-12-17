@@ -97,3 +97,4 @@ def create_table():
     else:
         print('Tabela Criada com sucesso!')
 
+create_table()

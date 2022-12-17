@@ -10,7 +10,7 @@ def conecta_bd():
         if engine:
             return engine
         engine = create_engine(
-        url='mysql+mysqlconnector://felipe:12345@localhost:3306/copa',
+        url='mysql+mysqlconnector://root:admin@localhost:3306/copa',
         echo = True
         )
     except Exception as err:
