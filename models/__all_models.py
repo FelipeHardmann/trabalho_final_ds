@@ -1,8 +1,9 @@
-from Tecnico import Tecnico
+from Tecnico import Tecnicox
+from models import (Arbitro, Equipe, Fase, Grupo, ModelBase, Partida, Tecnico)
+from config.connection import conecta_bd
 
 
-
-def create_table():
+def create_table(Base):
     try:
         Base.metadata.create_all(conecta_bd())
     except Exception as err:
