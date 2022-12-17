@@ -60,8 +60,6 @@ class Equipe(Base):
     nome_equipe: str = sa.Column(sa.String(20), nullable=False)
     tecnico_id: int = sa.Column(sa.Integer, sa.ForeignKey('tecnico.id_tecnico'))
     grupo_id: int = sa.Column(sa.Integer, sa.ForeignKey('grupo.id_grupo'))
-    num_gols_equipe: int = sa.Column(sa.Integer, nullable = False)
-    id_partida: int = sa.Column(sa.Integer, sa.ForeignKey('partida.id_partida'))
 
     def __repr__(self) -> str:
         '''Essa função retorna a representação do objeto'''
@@ -80,16 +78,16 @@ class Partida(Base):
         '''Essa função retorna a representação do objeto'''
         return f''
 
-class Equipe_gol_partida(Base):
-    __tablename__ = 'gol_equipe_partida'
-    id_gol : int = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    id_equipe: int - sa.Column(sa.Integer, sa.ForeignKey('equipe.id_equipe'))
-    id_partida: int = sa.Column(sa.Integer, sa.ForeignKey('partida.id_partida'))
-    num_gol: int = sa.Column(sa.Integer, nullable = False)
+# class Equipe_gol_partida(Base):
+#     __tablename__ = 'gol_equipe_partida'
+#     id_gol : int = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+#     id_equipe: int - sa.Column(sa.Integer, sa.ForeignKey('equipe.id_equipe'))
+#     id_partida: int = sa.Column(sa.Integer, sa.ForeignKey('partida.id_partida'))
+#     num_gol: int = sa.Column(sa.Integer, nullable = False)
 
-    def __repr__(self) -> str:
-        '''Essa função retorna a representação do objeto'''
-        return f''
+    # def __repr__(self) -> str:
+    #     '''Essa função retorna a representação do objeto'''
+    #     return f''
 
 def create_table():
     try:
@@ -98,3 +96,4 @@ def create_table():
         raise err('Erro ao criar tabela')
     else:
         print('Tabela Criada com sucesso!')
+

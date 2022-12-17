@@ -9,14 +9,19 @@ from config.connection import (
 
 session = abre_sessao(conecta_bd())
 
-def inserir(tec):
-    session.add(tec)
-    session.commit
-    return f'{tec} cadstrado com Sucesso'
+def buscar_registro(tabela, nome):
+    reg = session.query(tabela).filter_by(name=nome).all()
+    return reg
+
+
+def inserir(nome):
+    session.add(nome)
+    session.commit()
+    return f'{nome} cadstrado com Sucesso'
 
 
 def listar_tabelas(tabela):
-    query_tabela = session.query(tabela).all
+    query_tabela = session.query(tabela).all()
     return query_tabela
 
 
@@ -44,7 +49,3 @@ def remover_registro(tabela, nome):
     session.commit()
     return f'{reg.nome} foi removido com sucesso'
 
-
-def buscar_registro(tabela, nome):
-    reg = session.query(tabela).filter_by(name=nome).all()
-    return reg

@@ -12,7 +12,6 @@ from config.table import (
     Equipe,
     Grupo,
     Partida,
-    Equipe_gol_partida,
     Fase
 )
 from modulos.actions import (
@@ -31,8 +30,21 @@ if __name__ == '__main__':
                 limpa_tela() 
                 match menu_secundario():
                     case 1:
+                        limpa_tela()
                         selecao = Equipe(
-                            nome = input('Digite o nome da seleção: ').strip().lower()
+                            nome_equipe = input('Digite o nome da seleção: ').strip().lower(),
+                            tecnico_id = int(input('ID: ')),
+                            grupo_id = int(input('ID: '))
                         )
                         print(inserir(selecao))
                         sleep(2)
+                    case 2:
+                        limpa_tela()
+                        print(cabecalho(' Atualizar registro '))
+                        for equipe in listar_tabelas(Equipe):
+                            print(f'{equipe.id_equipe} {equipe.nome_equipe}')
+                        escolha = int(input('Qual seleção você deseja atualizar: '))
+                        nova_selecao = input('Nova seleção: ')
+                        selecao = Equipe(
+                            print(atualizar_registros(Equipe, escolha, nova_selecao))
+                        )
