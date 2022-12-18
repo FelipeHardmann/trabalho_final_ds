@@ -8,8 +8,7 @@ class Partida(Base):
     data_hora_partida: datetime = sa.Column(sa.DateTime, nullable=False)
     local_partida: str = sa.Column(sa.String(30), nullable = False)
     id_arbitro: int = sa.Column(sa.Integer, sa.ForeignKey('arbitro.id_arbitro'))
-    id_equipe: int - sa.Column(sa.Integer, sa.ForeignKey('equipe.id_equipe'))
-
+    equipe = sa.relationship('Equipe', backref = 'partida')
     def __repr__(self) -> str:
         '''Essa função retorna a representação do objeto'''
         return f''

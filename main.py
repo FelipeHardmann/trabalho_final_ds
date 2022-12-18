@@ -5,29 +5,21 @@ from modulos.menu import (
     cabecalho
 )
 from time import sleep
-from config.table import (
-    create_table,
-    Tecnico,
-    Arbitro,
-    Equipe,
-    Grupo,
-    Partida,
-    Fase
-)
-from modulos.actions import (
+from modulos.actions.generic_actions import (
     inserir,
     buscar_registro,
     atualizar_registros,
     remover_registro,
     listar_tabelas
 )
+
 import sys
 
 
 def verifyEquipe():
     nameEquipe = str(input('Digite o nome da equipe: '))
     nameEquipeTrated = f"('{nameEquipe}',)"
-    for element in listar_tabelas(Equipe.nome_equipe):
+    for element in listar_tabelas(Equipe.nome_equipe): #Falta importar os models
         if(nameEquipeTrated == str(element)):
             nameEquipe = str(input('Equipe já existente, digite outro nome: '))
     selecao = Equipe(

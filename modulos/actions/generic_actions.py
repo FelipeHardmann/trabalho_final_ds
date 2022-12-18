@@ -1,5 +1,5 @@
 '''
-Arquivo para cadastrar, Listar, Remover, Procurar e Atualizar
+Arquivo para cadastrar, Listar
 '''
 
 from config.connection import (

@@ -1,5 +1,5 @@
 from Tecnico import Tecnicox
-from models import (Arbitro, Equipe, Fase, Grupo, ModelBase, Partida, Tecnico)
+from models import (Arbitro, Equipe, Fase, Grupo_fase_grupos, ModelBase, Partida, Tecnico)
 from config.connection import conecta_bd
 
 

@@ -3,7 +3,7 @@ from config.connection import (
     abre_sessao
 )
 
-from modulos.actions import (inserir, listar_tabelas)
+from modulos.actions.generic_actions import (inserir, listar_tabelas)
 
 session = abre_sessao(conecta_bd())
 
@@ -12,8 +12,8 @@ def buscar_registro(tabela, nome):
     return reg
 
 
-def atualizar_registros(id, nome):
-    query = session.query(nome).get(id)
+def atualizar_registros(id, Tecnico): #Recebe o id e o registro para sobrescrever o antigo
+    query = session.query(Tecnico).get(id)
     session.commit()
     return f'{query.nome_equipe} foi atualizado com sucesso!'
 
