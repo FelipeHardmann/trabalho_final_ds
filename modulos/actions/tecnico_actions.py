@@ -7,15 +7,15 @@ from modulos.actions.generic_actions import (inserir, listar_tabelas)
 
 session = abre_sessao(conecta_bd())
 
-def buscar_registro(tabela, nome):
-    reg = session.query(tabela).filter_by(nome_tecnico=nome).all()
+def buscar_registro(Tecnico, nome):
+    reg = session.query(Tecnico).filter_by(nome_tecnico=nome).all()
     return reg
 
 
 def atualizar_registros(id, Tecnico): #Recebe o id e o registro para sobrescrever o antigo
     query = session.query(Tecnico).get(id)
     session.commit()
-    return f'{query.nome_equipe} foi atualizado com sucesso!'
+    return f'{query.nome_tecnico} foi atualizado com sucesso!'
 
 
 def remover_registro(id, nome_tecnico):

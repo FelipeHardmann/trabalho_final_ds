@@ -4,6 +4,8 @@ import os
 
 engine = None
 
+#Abrindo conexão com o banco
+
 def conecta_bd():
     try:
         global engine

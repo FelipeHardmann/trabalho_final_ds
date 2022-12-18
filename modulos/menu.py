@@ -1,6 +1,7 @@
 import os
 import platform
 
+#Tabela secundária
 
 def limpa_tela() -> None:
     '''

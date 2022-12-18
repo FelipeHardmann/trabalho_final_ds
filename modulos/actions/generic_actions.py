@@ -2,6 +2,9 @@
 Arquivo para cadastrar, Listar
 '''
 
+#Funlções de requisição ao banco genéricas (que todas as tabelas podem usar)
+#Dentro de cada action de cada tabela, tem requisição ao banco usando seu modelo para tais requisições
+
 from config.connection import (
     conecta_bd,
     abre_sessao

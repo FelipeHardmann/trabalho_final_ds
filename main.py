@@ -1,3 +1,4 @@
+from modulos.actions.arbitro_actions import atualizar_registros, remover_registro
 from modulos.menu import (
     menu_principal,
     limpa_tela,
@@ -7,16 +8,15 @@ from modulos.menu import (
 from time import sleep
 from modulos.actions.generic_actions import (
     inserir,
-    buscar_registro,
-    atualizar_registros,
-    remover_registro,
     listar_tabelas
 )
+
+from models.__all_models import (Arbitro, Equipe, Grupo_playoff, Fase, Grupo_fase_grupos, Gol_equipe_partida, Tecnico, Partida)
 
 import sys
 
 
-def verifyEquipe():
+def verifyEquipe(): #Função verifica se equipe já existe
     nameEquipe = str(input('Digite o nome da equipe: '))
     nameEquipeTrated = f"('{nameEquipe}',)"
     for element in listar_tabelas(Equipe.nome_equipe): #Falta importar os models
@@ -29,8 +29,11 @@ def verifyEquipe():
     )
     return selecao
 
+
+#Menu Principal
+
 if __name__ == '__main__':
-    while True:
+    while True: 
         match menu_principal():
             case 1:
                 limpa_tela() 
@@ -38,14 +41,15 @@ if __name__ == '__main__':
                     case 1:
                         limpa_tela()
                        # print(element.nome_equipe)
-                        print(inserir(verifyEquipe()))
+                        inserir(verifyEquipe()) #Passa na função inserir o retorno da função verify
                         sleep(2)
                     case 2:
                         # Está com erro
                         limpa_tela()
                         print(cabecalho(' Atualizar registro '))
+                        #Retorna a lista de todas as seleçoes para o usuario escolher qual deseja atualizar
                         for equipe in listar_tabelas(Equipe):
-                            print(f'{equipe.id_equipe} {equipe.nome_equipe}')
+                            print(f'{equipe.id_equipe} {equipe.nome_equipe}') 
                         escolha = int(input('Qual seleção você deseja atualizar: '))
                         nova_selecao = input('Nova seleção: ')
                         selecao = Equipe(
@@ -54,9 +58,8 @@ if __name__ == '__main__':
                     case 3:
                         limpa_tela()
                         print(cabecalho(' Excluindo Seleção '))
-                        for selecao in listar_tabelas(Equipe):
-                            print(f'{selecao.nome_equipe}')
+                        #Mesmo objetivo do laço do case 2
+                        for equipe in listar_tabelas(Equipe):
+                            print(f'{equipe.nome_equipe}')
                         equipe = input('Qual seleção você deseja remover? ').lower()
                         print(remover_registro(Equipe, equipe))
-                        
-                    
