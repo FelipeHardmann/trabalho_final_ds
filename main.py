@@ -11,7 +11,14 @@ from modulos.actions.generic_actions import (
     listar_tabelas
 )
 
-from models.__all_models import (Arbitro, Equipe, Grupo_playoff, Fase, Grupo_fase_grupos, Gol_equipe_partida, Tecnico, Partida)
+from config.tables import (
+    Tecnico,
+    Partida,
+    Grupo,
+    Arbitro,
+    Equipe,
+    Fase,
+    )
 
 import sys
 
